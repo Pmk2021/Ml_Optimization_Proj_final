@@ -48,7 +48,7 @@ python finetune.py
  The remaining scripts must have the percent of weights that you want to train passed in. This can be done with the `--density` flag as such:
 
  ```bash
- python finetune_biggest_grad.py density 0.1
+ python finetune_biggest_grad.py --density 0.1
  ```
 
  The above script will only train the top 10% of weights by gradient size every timestep.
