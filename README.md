@@ -2,9 +2,16 @@
 
 ## Installation
 
-To install all required packages, use the command
+To install all required packages, first create and activate a Conda environment named `optimizer_project`, then install the dependencies:
 
 ```bash
+# Create the conda environment
+conda create -n optimizer_project python=3.11 -y
+
+# Activate the environment
+conda activate optimizer_project
+
+# Install required packages
 pip install transformers datasets torch accelerate safetensors
 ```
 
@@ -54,15 +61,17 @@ python finetune.py
 
 
  ```
- lm_eval --model hf  --model_args pretrained=C:\Users\prana\OneDrive\Desktop\optimizer_project\big_2_mag_size  --tasks [task_name] --device cuda:0   --batch_size 4 --limit 1000 --num_fewshot 2
+ lm_eval --model hf  --model_args pretrained=[path_to_model] --tasks [task_name] --device cuda:0   --batch_size 4 --limit 1000 --num_fewshot 2
  ```
 
-Where [task_name] is one of the following:
+Where `[task_name]` is one of the following:
 
 1) xwinograd_en
 2) mmlu_social_sciences
 3) babi 
 4) triviaqa
 5) Piqa
+
+And `[path_to_model]` is the path to the folder containing files to the finetuned model you wish to evaluate.
 
 Due to time/compute constraints, each of these commands were run one at a time on a laptop, though they could possibly be parallelized on a more powerful computer.

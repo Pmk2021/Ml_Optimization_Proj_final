@@ -36,8 +36,6 @@ VAL_SPLIT = 0.1  # fraction of data held out for validation
 EVAL_STEPS = 500  # run validation every N optimizer steps
 LOG_STEPS = 50  # print training loss every N optimizer steps
 
-# ─────────────────────────────────────────────
-
 
 def compute_gradient_mask(model, density):
     """Return a dict of masks selecting the top `density` fraction by gradient magnitude."""
