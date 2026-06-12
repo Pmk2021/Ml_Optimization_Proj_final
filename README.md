@@ -17,12 +17,12 @@ Finally, download the finetuning dataset from here: https://huggingface.co/datas
 ## Finetuning LLMs
  There are 6 main fine-tuning training scripts in the folder `scripts/`:
 
- 1) `finetune.py`
- 2) `finetune_lora.py`
- 3) `finetune_smallest.py`
- 4) `finetune_smallest_grad.py`
- 5) `finetune_biggest.py`
- 6) `finetune_biggest_grad.py`
+ 1) `finetune.py`: Finetunes entire model
+ 2) `finetune_lora.py`: Finetunes model with Lora(traines about 2% of the model)
+ 3) `finetune_smallest.py`: Finetunes only smallest weights by magnitude
+ 4) `finetune_smallest_grad.py`: Finetuned only smallest weights by gradient magnitude
+ 5) `finetune_biggest.py`: Finetunes only biggest weights by magnitude
+ 6) `finetune_biggest_grad.py`: Finetuned only biggest weights by gradient magnitude
 
  Due to the long training time, each of these files only trains a single model. They can be called as follows. 
  
