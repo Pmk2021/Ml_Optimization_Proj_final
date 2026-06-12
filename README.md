@@ -12,7 +12,7 @@ conda create -n optimizer_project python=3.11 -y
 conda activate optimizer_project
 
 # Install required packages
-pip install transformers datasets torch accelerate safetensors
+pip install transformers==4.47.0 datasets==5.0.0 accelerate==1.13.0 safetensors==0.8.0 torch==2.5.1 torchvision torchaudio peft --extra-index-url https://download.pytorch.org/whl/cu121
 ```
 
 Then, download the supra-50-m base model from here: https://huggingface.co/SupraLabs/Supra-50M-Base.
@@ -24,12 +24,12 @@ Finally, download the finetuning dataset from here: https://huggingface.co/datas
 ## Finetuning LLMs
  There are 6 main fine-tuning training scripts in the folder `scripts/`:
 
- 1) `finetune.py`: Finetunes entire model
- 2) `finetune_lora.py`: Finetunes model with Lora(traines about 2% of the model)
- 3) `finetune_smallest.py`: Finetunes only smallest weights by magnitude
- 4) `finetune_smallest_grad.py`: Finetuned only smallest weights by gradient magnitude
- 5) `finetune_biggest.py`: Finetunes only biggest weights by magnitude
- 6) `finetune_biggest_grad.py`: Finetuned only biggest weights by gradient magnitude
+ 1) `scripts/finetune.py`: Finetunes entire model
+ 2) `scripts/finetune_lora.py`: Finetunes model with Lora(traines about 2% of the model)
+ 3) `scripts/finetune_smallest.py`: Finetunes only smallest weights by magnitude
+ 4) `scripts/finetune_smallest_grad.py`: Finetuned only smallest weights by gradient magnitude
+ 5) `scripts/finetune_biggest.py`: Finetunes only biggest weights by magnitude
+ 6) `scripts/finetune_biggest_grad.py`: Finetuned only biggest weights by gradient magnitude
 
  Due to the long training time, each of these files only trains a single model. They can be called as follows. 
  
@@ -75,3 +75,19 @@ Where `[task_name]` is one of the following:
 And `[path_to_model]` is the path to the folder containing files to the finetuned model you wish to evaluate.
 
 Due to time/compute constraints, each of these commands were run one at a time on a laptop, though they could possibly be parallelized on a more powerful computer.
+
+## Regenerating results
+
+To regenerate results shown in the report, run the command:
+
+```bash
+
+run_training.sh
+
+```
+
+This will generate the training results. To generate downstream benchmarks, run the command:
+
+```bash
+run_benchmarks.sh
+```
